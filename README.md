@@ -1,2 +1,2 @@
-# api5-backend
+# Backend
 Backend from HEXTECH-API5sem
