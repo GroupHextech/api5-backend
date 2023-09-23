@@ -13,26 +13,26 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "res_reserva")
-public class Reserva {
+public class ReservaEntity {
 
-   @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "res_id")
-    private Long id;
+    private Long resId;
 
     @Column(name = "res_nome")
-    private String nome; 
+    private String resNome; 
     
+    @Column(name = "res_telefone")
+    private Integer resTelefone;
+
     @Column(name = "res_mesa")
-    private Integer mesa;
+    private Integer resMesa;
 
     @Column(name = "res_data_hora")
-    private LocalDateTime dataHora;
+    private LocalDateTime resDataHora;
 
     @Column(name = "res_status")
-    private String status;
-
-    @Column(name = "pra_id")
-    private Long idPrato;
+    private String resStatus;
 
 }
