@@ -10,15 +10,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "ite_item")
-public class Item {
-
+@Table(name = "rst_restaurante")
+public class RestauranteEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ite_id")
+    @Column(name = "rst_id")
     private Long id;
 
-    @Column(name = "ite_nome")
-    private String nome; 
+    @Column(name = "rst_nome")
+    private String nome;
+
+    @Column(name = "rst_nota")
+    private Integer nota; 
 
 }
