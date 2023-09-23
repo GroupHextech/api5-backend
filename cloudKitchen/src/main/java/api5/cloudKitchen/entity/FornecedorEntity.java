@@ -10,24 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "pra_prato")
-public class Prato {
+@Table(name = "for_fornecedor")
+public class FornecedorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pra_id")
+    @Column(name = "for_id")
     private Long id;
 
-    @Column(name = "pra_nome")
+    @Column(name = "for_nome")
     private String nome;
 
-    @Column(name = "pra_custo")
-    private Double custo;
-
-    @Column(name = "pra_preco")
-    private Double preco;
-
-    @Column(name = "pra_desempenho")
-    private Integer desempenho;
-    
 }
