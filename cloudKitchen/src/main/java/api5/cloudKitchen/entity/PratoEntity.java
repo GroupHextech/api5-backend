@@ -10,21 +10,21 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "for_fornecedor")
-public class Fornecedor {
+@Table(name = "pra_prato")
+public class PratoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "for_id")
-    private Long id;
+    @Column(name = "pra_id")
+    private Long praId;
 
-    @Column(name = "for_nome")
-    private String nome;
+    @Column(name = "pra_nome")
+    private String praNome; 
 
-    @Column(name = "for_telefone")
-    private String telefone;
+    @Column(name = "pra_custo")
+    private Float praCusto;
 
-    @Column(name = "for_email")
-    private String email;
-    
+    @Column(name = "pra_preco_venda")
+    private Float praPrecoVenda;
+
 }
