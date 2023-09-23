@@ -16,11 +16,11 @@ import lombok.Data;
 @Entity
 @Table(name = "ins_insumo")
 public class InsumoEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ins_id")
-    private Long idInsumo;
+    private Long insId;
 
     @Column(name = "ins_quantidade")
     private Integer insQuantidade;

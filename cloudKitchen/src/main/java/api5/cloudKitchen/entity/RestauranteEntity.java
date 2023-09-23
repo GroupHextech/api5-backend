@@ -12,16 +12,19 @@ import lombok.Data;
 @Entity
 @Table(name = "rst_restaurante")
 public class RestauranteEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rst_id")
-    private Long id;
+    private Long rstId;
 
     @Column(name = "rst_nome")
-    private String nome;
+    private String rstNome;
 
     @Column(name = "rst_nota")
-    private Integer nota; 
+    private Integer rstNota;
+
+    @Column(name = "ins_id")
+    private Integer insId;
 
 }

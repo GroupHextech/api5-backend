@@ -16,9 +16,9 @@ public class FornecedorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "for_id")
-    private Long id;
+    private Long forId;
 
     @Column(name = "for_nome")
-    private String nome;
+    private String forNome;
 
 }
