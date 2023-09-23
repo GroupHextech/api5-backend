@@ -24,7 +24,7 @@ public class ReservaEntity {
     private String resNome; 
     
     @Column(name = "res_telefone")
-    private Integer resTelefone;
+    private String resTelefone;
 
     @Column(name = "res_mesa")
     private Integer resMesa;
