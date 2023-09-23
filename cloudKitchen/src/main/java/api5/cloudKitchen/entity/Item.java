@@ -20,5 +20,5 @@ public class Item {
 
     @Column(name = "ite_nome")
     private String nome; 
-    
+
 }
