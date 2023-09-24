@@ -16,3 +16,5 @@ public interface InsumoRepository extends JpaRepository<InsumoEntity, Long>{
     List<Object[]> consultarInsumosDiferenca();
 
 }
+
+    
