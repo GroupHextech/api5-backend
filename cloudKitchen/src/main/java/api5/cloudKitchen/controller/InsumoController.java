@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import api5.cloudKitchen.entity.InsumoEntity;
 import api5.cloudKitchen.repository.InsumoRepository;
-import api5.cloudKitchen.service.InsumoService;
 
 @CrossOrigin
 @RestController
