@@ -1,12 +1,11 @@
 package api5.cloudKitchen.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api5.cloudKitchen.entity.InsumoEntity;
 import api5.cloudKitchen.repository.InsumoRepository;
-
-import java.util.List;
 
 @Service
 public class InsumoService {
@@ -14,14 +13,24 @@ public class InsumoService {
     @Autowired
     private InsumoRepository insumoRepository;
 
-    // Método para obter todos os insumos
-    public List<InsumoEntity> getAllInsumos() {
-        return insumoRepository.findAll();
+    public InsumoRepository getInsumoRepository() {
+        return insumoRepository;
     }
 
-    // Método para obter detalhes de insumo e fornecedor
-    public List<Object[]> getDetalhesInsumoFornecedor() {
-        return insumoRepository.getDetalhesInsumos();
+    public void setInsumoRepository(InsumoRepository insumoRepository) {
+        this.insumoRepository = insumoRepository;
+    }
+
+    public static List<InsumoRepository> findAll() {
+        return null;
+    }
+
+    public List<Object[]> consultarInsumos() {
+        return insumoRepository.consultarInsumos();
+    }
+
+    public List<Object[]> consultarInsumosDiferenca() {
+        return insumoRepository.consultarInsumosDiferenca();
     }
 
     public List<Object[]> consultarInsumosDiferenca() {
