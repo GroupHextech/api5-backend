@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -24,7 +26,8 @@ public class RestauranteEntity {
     @Column(name = "rst_nota")
     private Integer rstNota;
 
-    @Column(name = "ins_id")
-    private Integer insId;
+    @ManyToOne
+    @JoinColumn(name = "ins_id", referencedColumnName = "ins_id")
+    private InsumoEntity insId;
 
 }
