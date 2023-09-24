@@ -9,11 +9,10 @@ import api5.cloudKitchen.repository.RestauranteRepository;
 
 @Service
 public class FeedbackService {
-    
+
     @Autowired
     private RestauranteRepository restauranteRepository;
 
-    @Autowired
     public FeedbackService(RestauranteRepository restauranteRepository) {
         this.restauranteRepository = restauranteRepository;
     }
