@@ -33,12 +33,4 @@ public class InsumoService {
         return insumoRepository.consultarInsumosDiferenca();
     }
 
-    public List<Object[]> consultarInsumosDiferenca() {
-        return null;
-    }
-
-    public List<Object[]> consultarInsumos() {
-        return null;
-    }
-
 }
