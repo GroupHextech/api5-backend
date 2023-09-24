@@ -25,4 +25,12 @@ public class InsumoService {
         return null;
     }
 
+    public List<Object[]> consultarInsumos() {
+        return insumoRepository.consultarInsumos();
+    }
+
+    public List<Object[]> consultarInsumosDiferenca() {
+        return insumoRepository.consultarInsumosDiferenca();
+    }
+
 }

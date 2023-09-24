@@ -7,21 +7,28 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import api5.cloudKitchen.entity.InsumoEntity;
-import api5.cloudKitchen.repository.InsumoRepository;
+import api5.cloudKitchen.service.InsumoService;
 
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/insumos")
 public class InsumoController {
 
+    private final InsumoService insumoService;
+
     @Autowired
-    private InsumoRepository insumoRepository;
+    public InsumoController(InsumoService insumoService) {
+        this.insumoService = insumoService;
+    }
 
     @GetMapping
-    public List<InsumoEntity> listarInsumos() {
-        return insumoRepository.findAll();
+    public List<Object[]> consultarInsumos() {
+        return insumoService.consultarInsumos();
+    }
+
+    @GetMapping("/entradas-saidas")
+    public List<Object[]> consultarInsumosDiferenca() {
+        return insumoService.consultarInsumosDiferenca();
     }
 
 }
