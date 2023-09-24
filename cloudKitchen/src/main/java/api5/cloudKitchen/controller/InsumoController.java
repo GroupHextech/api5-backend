@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/insumo")
+@RequestMapping(value = "/insumos")
 public class InsumoController {
 
     private final InsumoService insumoService;
@@ -20,12 +20,12 @@ public class InsumoController {
         this.insumoService = insumoService;
     }
 
-    @GetMapping("/consultar-insumos")
+    @GetMapping
     public List<Object[]> consultarInsumos() {
         return insumoService.consultarInsumos();
     }
 
-    @GetMapping("/consultar-insumos-diferenca")
+    @GetMapping("/entradas-saidas")
     public List<Object[]> consultarInsumosDiferenca() {
         return insumoService.consultarInsumosDiferenca();
     }
