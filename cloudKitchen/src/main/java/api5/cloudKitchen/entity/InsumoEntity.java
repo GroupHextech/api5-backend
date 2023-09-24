@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -34,10 +36,12 @@ public class InsumoEntity {
     @Column(name = "ins_valor_compra")
     private Float insValorCompra;
 
-    @Column(name = "for_id")
-    private Long forId;
+    @ManyToOne
+    @JoinColumn(name = "for_id", referencedColumnName = "for_id")
+    private FornecedorEntity fornecedor;
 
-    @Column(name = "ite_id")
-    private Long iteId;
+    @ManyToOne
+    @JoinColumn(name = "ite_id", referencedColumnName = "ite_id")
+    private ItemEntity produto;
 
 }
