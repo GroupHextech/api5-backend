@@ -18,13 +18,13 @@ public class FeedbackController {
     public FeedbackController(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
     }
-    
+
     @CrossOrigin
     @GetMapping("/media")
     public Double obterMediaDesempenhoRestaurante() {
         return feedbackService.obterMediaDesempenhoRestaurante();
     }
-    
+
     @CrossOrigin
     @GetMapping("/quantidade-notas")
     public List<Object[]> obterQuantidadeNotasRestaurante() {

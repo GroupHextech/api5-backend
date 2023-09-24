@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -44,6 +46,5 @@ public class InsumoEntity {
     @JoinColumn(name = "ite_id", referencedColumnName = "ite_id")
     private ItemEntity produto;
 
-
-
 }
+
