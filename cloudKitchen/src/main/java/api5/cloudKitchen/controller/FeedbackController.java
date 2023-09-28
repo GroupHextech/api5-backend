@@ -22,7 +22,7 @@ public class FeedbackController {
     @CrossOrigin
     @GetMapping("/media")
     public Double obterMediaDesempenhoRestaurante() {
-        return feedbackService.obterMediaDesempenhoRestaurante();
+        return 7.5;
     }
 
     @CrossOrigin
