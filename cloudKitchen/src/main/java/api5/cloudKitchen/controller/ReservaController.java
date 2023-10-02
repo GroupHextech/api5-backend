@@ -15,9 +15,9 @@ import api5.cloudKitchen.service.ReservaService;
 @RequestMapping(value = "/reserva")
 public class ReservaController {
 
+    @Autowired
     private final ReservaService reservaService;
 
-    @Autowired
     public ReservaController(ReservaService reservaService) {
         this.reservaService = reservaService;
     }

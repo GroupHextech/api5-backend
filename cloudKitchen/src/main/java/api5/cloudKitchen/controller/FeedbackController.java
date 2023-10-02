@@ -2,6 +2,7 @@ package api5.cloudKitchen.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import api5.cloudKitchen.service.FeedbackService;
 @RequestMapping("/feedback")
 public class FeedbackController {
 
+    @Autowired
     private final FeedbackService feedbackService;
 
     public FeedbackController(FeedbackService feedbackService) {
@@ -22,7 +24,7 @@ public class FeedbackController {
     @CrossOrigin
     @GetMapping("/media")
     public Double obterMediaDesempenhoRestaurante() {
-        return 7.5;
+        return feedbackService.obterMediaDesempenhoRestaurante();
     }
 
     @CrossOrigin
