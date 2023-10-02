@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class ReservaService {
 
+    @Autowired
     private final ReservaRepository reservaRepository;
 
-    @Autowired
     public ReservaService(ReservaRepository reservaRepository) {
         this.reservaRepository = reservaRepository;
     }

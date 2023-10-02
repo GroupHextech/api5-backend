@@ -14,9 +14,9 @@ import api5.cloudKitchen.service.InsumoService;
 @RequestMapping(value = "/insumos")
 public class InsumoController {
 
+    @Autowired
     private final InsumoService insumoService;
 
-    @Autowired
     public InsumoController(InsumoService insumoService) {
         this.insumoService = insumoService;
     }
