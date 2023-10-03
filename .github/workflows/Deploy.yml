@@ -18,4 +18,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/opc
-            sh start_app.sh
+            sh start_app.sh 
+            cd /home/opc/api5-backend/cloudKitchen
+            git pull origin main
+            mvn clean package
+            cd target
+            java -jar cloudKitchen-0.0.1-SNAPSHOT.jar &
+            
