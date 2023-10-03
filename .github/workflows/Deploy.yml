@@ -10,18 +10,24 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps: 
-    -   name: Deploy
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /home/opc
-            sh start_app.sh 
-            cd /home/opc/api5-backend/cloudKitchen
-            git pull origin main
-            mvn clean package
-            cd target
-            java -jar cloudKitchen-0.0.1-SNAPSHOT.jar &
-            
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: SSH and Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd /home/opc
+          sh start_app.sh 
+          cd /home/opc/api5-backend/cloudKitchen
+          git pull origin main
+          mvn clean package
+          cd target
+          java -jar cloudKitchen-0.0.1-SNAPSHOT.jar &
+    # Add a condition to end the workflow if desired
+    - name: End Workflow
+      run: exit 0
+      if: always()
