@@ -19,4 +19,6 @@ jobs:
           script: |
             cd /home/opc/api5-backend/cloudKitchen
             git pull origin main
-            mvn spring-boot:run
+            mvn clean package
+            cd target
+            java -jar cloudKitchen-0.0.1-SNAPSHOT.jar &
