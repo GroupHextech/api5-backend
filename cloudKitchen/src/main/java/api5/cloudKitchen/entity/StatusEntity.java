@@ -10,15 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "ite_item")
-public class ItemEntity {
+@Table(name = "sta_status")
+public class StatusEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ite_id")
-    private Long iteId;
+    @Column(name = "sta_id")
+    private Long staId;
 
-    @Column(name = "ite_nome")
-    private String iteNome; 
+    @Column(name = "sta_nome")
+    private String staNome;
 
 }

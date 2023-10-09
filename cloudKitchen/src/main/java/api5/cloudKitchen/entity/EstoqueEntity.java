@@ -12,22 +12,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "rst_restaurante")
-public class RestauranteEntity {
+@Table(name = "est_estoque")
+public class EstoqueEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rst_id")
-    private Long rstId;
+    @Column(name = "est_id")
+    private Long estId;
 
-    @Column(name = "rst_nome")
-    private String rstNome;
+    @Column(name = "est_nome")
+    private String estNome;
 
-    @Column(name = "rst_nota")
-    private Integer rstNota;
+    @Column(name = "est_qtd_estoque")
+    private Float estQtdEstoque;
 
     @ManyToOne
-    @JoinColumn(name = "ins_id", referencedColumnName = "ins_id")
-    private InsumoEntity insId;
+    @JoinColumn(name = "uni_id", referencedColumnName = "uni_id")
+    private UnidadeEntity uniId; 
 
 }

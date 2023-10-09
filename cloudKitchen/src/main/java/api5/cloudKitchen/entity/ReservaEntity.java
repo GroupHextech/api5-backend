@@ -29,10 +29,10 @@ public class ReservaEntity {
     @Column(name = "res_mesa")
     private Integer resMesa;
 
+    @Column(name = "res_qnt_pessoas")
+    private Integer resQntPessoas;
+
     @Column(name = "res_data_hora")
     private LocalDateTime resDataHora;
-
-    @Column(name = "res_status")
-    private String resStatus;
 
 }

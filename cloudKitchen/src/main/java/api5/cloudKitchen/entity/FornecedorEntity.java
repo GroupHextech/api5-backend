@@ -21,4 +21,13 @@ public class FornecedorEntity {
     @Column(name = "for_nome")
     private String forNome;
 
+    @Column(name = "for_telefone")
+    private String forTelefone;
+
+    @Column(name = "for_endereco")
+    private String forEndereco;
+
+    @Column(name = "for_email")
+    private String forEmail;
+
 }

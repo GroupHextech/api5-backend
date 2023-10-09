@@ -21,26 +21,26 @@ public class InsumoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ins_id")
-    private Long id;
+    private Long insId;
 
-    @Column(name = "ins_quantidade")
-    private Integer qtd;
+    @Column(name = "ins_qnt_entrada")
+    private Float insQntEntrada;
 
     @Column(name = "ins_validade")
-    private Date validade;
+    private Date insValidade;
 
-    @Column(name = "ins_data_hora_compra")
-    private LocalDateTime dataCompra;
+    @Column(name = "ins_datahora_compra")
+    private LocalDateTime insDatahoraCompra;
 
     @Column(name = "ins_valor_compra")
-    private Float preco;
+    private Float insValorCompra;
 
     @ManyToOne
     @JoinColumn(name = "for_id", referencedColumnName = "for_id")
-    private FornecedorEntity fornecedor;
+    private FornecedorEntity forId;
 
     @ManyToOne
-    @JoinColumn(name = "ite_id", referencedColumnName = "ite_id")
-    private ItemEntity produto;
+    @JoinColumn(name = "est_id", referencedColumnName = "est_id")
+    private EstoqueEntity estId;
 
 }
