@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;ploadController {
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadCSV(@RequestParam("csvFile") MultipartFile file) {
+
+
         // Processar o arquivo CSV aqui e salvar os dados no banco de dados
         // Lembre-se de lidar com exceções e validações adequadas
 
@@ -16,4 +18,4 @@ import org.springframework.web.multipart.MultipartFile;ploadController {
     }
 }
     
-}
+
