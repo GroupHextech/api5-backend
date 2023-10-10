@@ -29,9 +29,6 @@ public class FuncionarioEntity {
     @Column(name = "fun_salario")
     private Float funSalario;
 
-    @Column(name = "fun_desempenho") 
-    private Integer funDesempenho;
-
     @Column(name = "fun_folga") 
     private Date funFolga;
 

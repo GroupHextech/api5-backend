@@ -23,14 +23,14 @@ public class InsumoEntity {
     @Column(name = "ins_id")
     private Long insId;
 
-    @Column(name = "ins_qnt_entrada")
-    private Float insQntEntrada;
+    @Column(name = "ins_qtd_entrada")
+    private Float insQtdEntrada;
 
     @Column(name = "ins_validade")
     private Date insValidade;
 
-    @Column(name = "ins_datahora_compra")
-    private LocalDateTime insDatahoraCompra;
+    @Column(name = "ins_data_hora_compra")
+    private LocalDateTime insDataHoraCompra;
 
     @Column(name = "ins_valor_compra")
     private Float insValorCompra;

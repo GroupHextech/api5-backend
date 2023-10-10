@@ -20,8 +20,8 @@ public class ConfeccaoEntity {
     @Column(name = "con_id")
     private Long conId;
 
-    @Column(name = "con_qnt_utilizada")
-    private Float conQntUtilizada;
+    @Column(name = "con_qtd_utilizada")
+    private Float conQtdUtilizada;
 
     @ManyToOne
     @JoinColumn(name = "est_id", referencedColumnName = "est_id")
