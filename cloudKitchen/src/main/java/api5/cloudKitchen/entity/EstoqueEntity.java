@@ -26,8 +26,15 @@ public class EstoqueEntity {
     @Column(name = "est_qtd_estoque")
     private Float estQtdEstoque;
 
+    @Column(name = "est_nivel_minimo")
+    private Float estNivelMinimo;
+
     @ManyToOne
     @JoinColumn(name = "uni_id", referencedColumnName = "uni_id")
-    private UnidadeEntity uniId; 
+    private UnidadeEntity uniId;
+
+    @ManyToOne
+    @JoinColumn(name = "cat_id", referencedColumnName = "cat_id")
+    private CategoriaEntity catId; 
 
 }

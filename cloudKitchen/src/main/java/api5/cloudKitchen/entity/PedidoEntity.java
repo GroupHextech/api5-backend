@@ -31,20 +31,15 @@ public class PedidoEntity {
     @Column(name = "ped_valor_total")
     private Timestamp pedValorTotal;
 
-    @ManyToOne
-    @JoinColumn(name = "res_id", referencedColumnName = "res_id")
-    private ReservaEntity resId;
-
-    @ManyToOne
-    @JoinColumn(name = "pra_id", referencedColumnName = "pra_id")
-    private PratoEntity praId;
+    @Column(name = "ped_avaliacao")
+    private Integer pedAvaliacao;
 
     @ManyToOne
     @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
     private FuncionarioEntity funId;
 
     @ManyToOne
-    @JoinColumn(name = "sta_id", referencedColumnName = "sta_id")
-    private StatusEntity staId;
+    @JoinColumn(name = "res_id", referencedColumnName = "res_id")
+    private ReservaEntity resId;
 
 }
