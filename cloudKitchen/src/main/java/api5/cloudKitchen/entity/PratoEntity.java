@@ -20,6 +20,9 @@ public class PratoEntity {
     @Column(name = "pra_id")
     private Long praId;
 
+    @Column(name = "pra_nome")
+    private Float praNome;
+
     @Column(name = "pra_custo")
     private Float praCusto;
 
