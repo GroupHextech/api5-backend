@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import api5.cloudKitchen.entity.RestauranteEntity;
+import api5.cloudKitchen.entity.PedidoEntity;
 
-public interface RestauranteRepository extends JpaRepository<RestauranteEntity, Long> {
+public interface PedidoRepository extends JpaRepository<PedidoEntity, Long> {
 
     @Query(value = "SELECT * FROM v_media_desempenho_restaurante", nativeQuery = true)
     Double consultarMediaDesempenhoRestaurante();
