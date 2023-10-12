@@ -29,7 +29,7 @@ public class PedidoEntity {
     private Timestamp pedHoraEntregue;
 
     @Column(name = "ped_valor_total")
-    private Timestamp pedValorTotal;
+    private Float pedValorTotal;
 
     @Column(name = "ped_avaliacao")
     private Integer pedAvaliacao;
