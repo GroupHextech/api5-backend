@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
 
-    @Query(value = "SELECT * FROM v_mesa_status_por_data", nativeQuery = true)
+    @Query(value = "SELECT * FROM res_reserva", nativeQuery = true)
     List<Object[]> getMesaStatusPorData();
 
 }
