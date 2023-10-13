@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api5.cloudKitchen.entity.PedidoEntity;
 import api5.cloudKitchen.service.FeedbackService;
 
 @RestController
@@ -23,7 +24,7 @@ public class FeedbackController {
 
     @CrossOrigin
     @GetMapping("/media")
-    public Double obterMediaDesempenhoRestaurante() {
+    public List<PedidoEntity> obterMediaDesempenhoRestaurante() {
         return feedbackService.obterMediaDesempenhoRestaurante();
     }
 

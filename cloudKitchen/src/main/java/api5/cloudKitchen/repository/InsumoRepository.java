@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import api5.cloudKitchen.entity.InsumoEntity;
 
-public interface InsumoRepository extends JpaRepository<InsumoEntity, Long>{
+public interface InsumoRepository extends JpaRepository<InsumoEntity, Long> {
 
-    @Query(value = "SELECT * FROM v_detalhes_insumo_fornecedor", nativeQuery = true)
+    @Query(value = "ins_insumo", nativeQuery = true)
     List<Object[]> consultarInsumos();
 
-    @Query(value = "SELECT * FROM v_detalhes_insumo_com_diferenca", nativeQuery = true)
+    @Query(value = "SELECT * FROM fun_funcionario", nativeQuery = true)
     List<Object[]> consultarInsumosDiferenca();
 
 }

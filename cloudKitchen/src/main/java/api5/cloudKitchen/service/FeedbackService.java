@@ -5,20 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api5.cloudKitchen.repository.RestauranteRepository;
+import api5.cloudKitchen.entity.PedidoEntity;
+import api5.cloudKitchen.repository.PedidoRepository;
 
 @Service
 public class FeedbackService {
 
     @Autowired
-    private RestauranteRepository restauranteRepository;
+    private PedidoRepository restauranteRepository;
 
-    public FeedbackService(RestauranteRepository restauranteRepository) {
+    public FeedbackService(PedidoRepository restauranteRepository) {
         this.restauranteRepository = restauranteRepository;
     }
 
-    public Double obterMediaDesempenhoRestaurante() {
-        return restauranteRepository.consultarMediaDesempenhoRestaurante();
+    public List<PedidoEntity> obterMediaDesempenhoRestaurante() {
+        return restauranteRepository.findAll();
     }
 
     public List<Object[]> obterQuantidadeNotasRestaurante() {
