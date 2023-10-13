@@ -21,7 +21,6 @@ public class UnidadeEntity {
     @Column(name = "uni_nome")
     private String uniNome;
 
-    @Column(name = "est_sigla")
+    @Column(name = "uni_sigla", columnDefinition = "CHAR")
     private String uniSigla;
-
 }

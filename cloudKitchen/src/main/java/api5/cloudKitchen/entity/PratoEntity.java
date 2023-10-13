@@ -1,6 +1,6 @@
 package api5.cloudKitchen.entity;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class PratoEntity {
     private Long praId;
 
     @Column(name = "pra_nome")
-    private Float praNome;
+    private String praNome;
 
     @Column(name = "pra_custo")
     private Float praCusto;

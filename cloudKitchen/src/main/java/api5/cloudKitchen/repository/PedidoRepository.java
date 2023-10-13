@@ -10,7 +10,7 @@ import api5.cloudKitchen.entity.PedidoEntity;
 public interface PedidoRepository extends JpaRepository<PedidoEntity, Long> {
 
     @Query(value = "SELECT * FROM ped_pedido", nativeQuery = true)
-    Double consultarMediaDesempenhoRestaurante();
+    List<PedidoEntity> consultarMediaDesempenhoRestaurante();
 
     @Query(value = "SELECT * FROM pra_prato", nativeQuery = true)
     List<Object[]> consultarQuantidadeNotasRestaurante();
