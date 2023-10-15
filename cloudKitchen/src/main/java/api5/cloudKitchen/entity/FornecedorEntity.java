@@ -1,5 +1,7 @@
 package api5.cloudKitchen.entity;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,5 +31,20 @@ public class FornecedorEntity {
 
     @Column(name = "for_email")
     private String forEmail;
+
+    public static FornecedorEntity parse(String string) {
+        try {
+            // Crie um ObjectMapper para analisar a string JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            
+            // Use o ObjectMapper para desserializar a string em um objeto FornecedorEntity
+            FornecedorEntity fornecedor = objectMapper.readValue(string, FornecedorEntity.class);
+            
+            return fornecedor;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Em caso de erro na análise, retorne null ou trate a exceção de acordo com a necessidade.
+        }
+    }
 
 }

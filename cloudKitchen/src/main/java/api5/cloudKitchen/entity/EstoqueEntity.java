@@ -1,5 +1,7 @@
 package api5.cloudKitchen.entity;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,21 @@ public class EstoqueEntity {
 
     @ManyToOne
     @JoinColumn(name = "cat_id", referencedColumnName = "cat_id")
-    private CategoriaEntity catId; 
+    private CategoriaEntity catId;
+
+    public static EstoqueEntity parse(String string) {
+        try {
+            // Crie um ObjectMapper para analisar a string JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            
+            // Use o ObjectMapper para desserializar a string em um objeto EstoqueEntity
+            EstoqueEntity estoque = objectMapper.readValue(string, EstoqueEntity.class);
+            
+            return estoque;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Em caso de erro na análise, retorne null ou trate a exceção de acordo com a necessidade.
+        }
+    }
 
 }

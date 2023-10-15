@@ -2,6 +2,8 @@ package api5.cloudKitchen.controller;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
+import api5.cloudKitchen.entity.EstoqueEntity;
 import api5.cloudKitchen.entity.FornecedorEntity;
+import api5.cloudKitchen.entity.InsumoEntity;
 import api5.cloudKitchen.repository.CategoriaRepository;
 import api5.cloudKitchen.repository.ConfeccaoRepository;
 import api5.cloudKitchen.repository.EstoqueRepository;
@@ -88,12 +92,17 @@ public class UploadController {
             // Processar os dados e inserir no banco de dados
             for (String[] row : csvData) {
                 // Converte os dados do CSV para suas entidades
-                FornecedorEntity fornecedor = new FornecedorEntity();
-                fornecedor.setForNome(row[5]);
-                // Defina outros campos da entidade conforme necessário
+                InsumoEntity insumo = new InsumoEntity();
+                insumo.setInsId(Long.parseLong(row[0]));
+                insumo.setInsQtdEntrada(Float.parseFloat(row[1]));
+                insumo.setInsValidade(Date.valueOf(row[2]));
+                insumo.setInsDataHoraCompra(LocalDateTime.parse(row[3]));
+                insumo.setInsValorCompra(Float.parseFloat(row[4]));
+                insumo.setForId(FornecedorEntity.parse(row[5]));
+                insumo.setEstId(EstoqueEntity.parse(row[6]));
 
                 // Salva a entidade no banco de dados
-                fornecedorRepository.save(fornecedor);
+                insumoRepository.save(insumo);
             }
 
             return new ResponseEntity<>("Upload e processamento de arquivo CSV bem-sucedidos.", HttpStatus.OK);
