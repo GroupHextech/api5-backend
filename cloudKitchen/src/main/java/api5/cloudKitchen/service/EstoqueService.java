@@ -10,9 +10,9 @@ public class EstoqueService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void executarTrigger() {
+    public void avisoNivelBaixo() {
         // Execute a trigger do Oracle
-        jdbcTemplate.execute("BEGIN EXECUTE t_comparar_estoque; END;");
+        jdbcTemplate.execute("SELECT * FROM est_estoque WHERE est_qtd_estoque <= est_nivel_minimo");
     }
 
 }

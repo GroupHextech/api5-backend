@@ -16,9 +16,9 @@ public class EstoqueController {
         this.estoqueService = estoqueService;
     }
 
-    @GetMapping("/trigger")
-    public void executarTrigger() {
-        estoqueService.executarTrigger();
+    @GetMapping("/avisoNivelBaixo")
+    public void avisoNivelBaixo() {
+        estoqueService.avisoNivelBaixo();
     }
 
 }
