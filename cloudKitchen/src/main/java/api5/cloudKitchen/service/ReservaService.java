@@ -17,8 +17,8 @@ public class ReservaService {
         this.reservaRepository = reservaRepository;
     }
 
-    public List<Object[]> getMesaStatusPorData() {
-        return reservaRepository.getMesaStatusPorData();
+    public List<Object[]> getPratos() {
+        return reservaRepository.getPratos();
     }
 
 }
