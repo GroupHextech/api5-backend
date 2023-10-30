@@ -35,6 +35,11 @@ public class ReservaController {
         return reservaService.getPratos();
     }
 
+    @GetMapping("/reservado")
+    public List<Object[]> getReservaReservado() {
+        return reservaService.getReservaReservado();
+    }
+
     @PostMapping("/pedidos")
     public PedidoEntity criarPedido(@RequestBody PedidoDTO pedidoDTO) {
         return pedidoService.novoPedido(pedidoDTO);
