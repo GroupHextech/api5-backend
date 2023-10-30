@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import api5.cloudKitchen.DTO.PedidoDTO;
+import api5.cloudKitchen.DTO.PedidoRequestDTO;
+import api5.cloudKitchen.DTO.PedidoResponseDTO;
 import api5.cloudKitchen.entity.PedidoEntity;
+import api5.cloudKitchen.mapper.PedidoMapper;
 import api5.cloudKitchen.service.PedidoService;
 import api5.cloudKitchen.service.ReservaService;
 
@@ -25,6 +27,9 @@ public class ReservaController {
 
     @Autowired
     private PedidoService pedidoService;
+
+    @Autowired
+    private PedidoMapper pedidoMapper;
 
     public ReservaController(ReservaService reservaService) {
         this.reservaService = reservaService;
@@ -41,8 +46,13 @@ public class ReservaController {
     }
 
     @PostMapping("/pedidos")
-    public PedidoEntity criarPedido(@RequestBody PedidoDTO pedidoDTO) {
-        return pedidoService.novoPedido(pedidoDTO);
+    public PedidoResponseDTO criarPedido(@RequestBody PedidoRequestDTO pedidoDTO) {
+        try {
+            return pedidoMapper.map(pedidoService.novoPedido(pedidoDTO));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
