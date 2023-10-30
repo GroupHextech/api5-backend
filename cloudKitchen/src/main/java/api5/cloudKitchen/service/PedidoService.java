@@ -9,6 +9,7 @@ import api5.cloudKitchen.DTO.PedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoResponseDTO;
 import api5.cloudKitchen.entity.ItemPedidoEntity;
 import api5.cloudKitchen.entity.PedidoEntity;
+import api5.cloudKitchen.mapper.ItemPedidoMapper;
 import api5.cloudKitchen.mapper.PedidoMapper;
 import api5.cloudKitchen.repository.ItemPedidoRepository;
 import api5.cloudKitchen.repository.PedidoRepository;
@@ -25,11 +26,14 @@ public class PedidoService {
     @Autowired
     private PedidoMapper pedidoMapper;
 
+    @Autowired
+    private ItemPedidoMapper itemPedidoMapper;
+
     public PedidoEntity novoPedido(PedidoRequestDTO pedidoRequestDTO) throws Exception {
 
         PedidoEntity pedidoEntity = pedidoRepository.save(pedidoMapper.map(pedidoRequestDTO));
 
-        ItemPedidoEntity itemPedidoEntity = new ItemPedidoEntity();
+        ItemPedidoEntity itemPedidoEntity = itemPedidoRepository.save(itemPedidoMapper.map(pedidoRequestDTO));
 
         return pedidoEntity;
 
