@@ -10,10 +10,8 @@ import api5.cloudKitchen.DTO.PedidoRequestDTO;
 import api5.cloudKitchen.entity.ItemPedidoEntity;
 import api5.cloudKitchen.entity.PedidoEntity;
 import api5.cloudKitchen.entity.PratoEntity;
-import api5.cloudKitchen.entity.ReservaEntity;
 import api5.cloudKitchen.repository.PedidoRepository;
 import api5.cloudKitchen.repository.PratoRepository;
-import api5.cloudKitchen.repository.ReservaRepository;
 
 @Component
 public class ItemPedidoMapper {

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import api5.cloudKitchen.DTO.PedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoResponseDTO;
-import api5.cloudKitchen.entity.PedidoEntity;
 import api5.cloudKitchen.mapper.PedidoMapper;
 import api5.cloudKitchen.service.PedidoService;
 import api5.cloudKitchen.service.ReservaService;
