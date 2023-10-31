@@ -14,11 +14,11 @@ import lombok.Data;
 @Table(name = "ite_item_pedido")
 public class ItemPedidoEntity {
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pra_id", referencedColumnName = "pra_id")
     private PratoEntity praId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ped_id", referencedColumnName = "ped_id")
     private PedidoEntity pedId;
 

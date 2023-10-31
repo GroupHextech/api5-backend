@@ -1,12 +1,16 @@
 package api5.cloudKitchen.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import api5.cloudKitchen.DTO.ItemPedidoResponseDTO;
 import api5.cloudKitchen.DTO.PedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoResponseDTO;
+import api5.cloudKitchen.entity.ItemPedidoEntity;
 import api5.cloudKitchen.entity.PedidoEntity;
 import api5.cloudKitchen.entity.ReservaEntity;
 import api5.cloudKitchen.repository.ReservaRepository;
@@ -17,6 +21,9 @@ public class PedidoMapper {
     @Autowired
     ReservaRepository reservaRepository;
 
+    @Autowired
+    ItemPedidoMapper itemPedidoMapper;
+
     public PedidoEntity map(PedidoRequestDTO pedidoRequestDTO) throws Exception {
         PedidoEntity pedidoEntity = new PedidoEntity();
         pedidoEntity.setPedHoraPedido(pedidoRequestDTO.getPedHoraPedido());
@@ -26,6 +33,9 @@ public class PedidoMapper {
         if (resOptional.isEmpty()) {
             throw new Exception("Reserva não existe");
         }
+
+        List<ItemPedidoEntity> itens = new ArrayList<ItemPedidoEntity>();
+        pedidoEntity.setItens(itens);
         pedidoEntity.setResId(resOptional.get());
 
         return pedidoEntity;
@@ -38,6 +48,11 @@ public class PedidoMapper {
         pedidoResponseDTO.setPedHoraPedido(pedidoEntity.getPedHoraPedido());
         pedidoResponseDTO.setPedValorTotal(pedidoEntity.getPedValorTotal());
         pedidoResponseDTO.setReserva(pedidoEntity.getResId());
+
+        List<ItemPedidoResponseDTO> itens = new ArrayList<ItemPedidoResponseDTO>();
+        pedidoEntity.getItens().forEach(item->{
+            itens.add(itemPedidoMapper.map(item));
+        });
 
         return pedidoResponseDTO;
     }
