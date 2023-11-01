@@ -28,6 +28,7 @@ public class ItemPedidoMapper {
     PratoMapper pratoMapper;
 
     public ItemPedidoEntity map(ItemPedidoRequestDTO itemPedidoRequestDTO) throws Exception {
+
         ItemPedidoEntity itemPedidoEntity = new ItemPedidoEntity();
 
         Optional<PratoEntity> prato = pratoRepository.findById(itemPedidoRequestDTO.getPraId());
@@ -47,9 +48,11 @@ public class ItemPedidoMapper {
         itemPedidoEntity.setIteQuantidade(itemPedidoRequestDTO.getIteQuantidade());
 
         return itemPedidoEntity;
+
     }
 
     public ItemPedidoResponseDTO map(ItemPedidoEntity itemPedidoEntity) {
+
         ItemPedidoResponseDTO itemPedidoResponseDTO = new ItemPedidoResponseDTO();
 
         PratoDTO prato = pratoMapper.map(itemPedidoEntity.getPraId());
@@ -58,5 +61,6 @@ public class ItemPedidoMapper {
         itemPedidoResponseDTO.setIteQuantidade(itemPedidoEntity.getIteQuantidade());
 
         return itemPedidoResponseDTO;
+
     }
 }

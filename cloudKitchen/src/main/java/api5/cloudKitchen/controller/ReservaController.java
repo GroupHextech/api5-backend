@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api5.cloudKitchen.DTO.ItemPedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoResponseDTO;
 import api5.cloudKitchen.mapper.PedidoMapper;
@@ -61,7 +62,19 @@ public class ReservaController {
         @PathVariable Long pedID, @RequestBody PedidoRequestDTO pedidoRequestDTO
     ) {
         try {
-            return pedidoMapper.map(pedidoService.atualizarPedido(pedID, pedidoRequestDTO));
+            return pedidoMapper.map(pedidoService.atualizarPedido(pedidoRequestDTO, pedID));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @PutMapping("/atualizarItens/{pedId}")
+    public PedidoResponseDTO atualizarPedidoItem(
+        @PathVariable Long pedID, @RequestBody List<ItemPedidoRequestDTO> itens
+    ) {
+        try {
+            return pedidoMapper.map(pedidoService.atualizarItens(ItemPedidoRequestDTO, itens));
         } catch (Exception e) {
             e.printStackTrace();
             return null;
