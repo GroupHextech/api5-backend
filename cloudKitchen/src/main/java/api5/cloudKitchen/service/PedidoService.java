@@ -51,11 +51,11 @@ public class PedidoService {
         if (pedidoOptional.isPresent()) {
             PedidoEntity pedidoExistente = pedidoOptional.get();
 
-            PedidoEntity itemUpdate = pedidoMapper.map(pedidoRequestDTO);
+            PedidoEntity pedidoUpdate = pedidoMapper.map(pedidoRequestDTO);
 
-            pedidoExistente.setPedHoraEntregue(itemUpdate.getPedHoraEntregue());
-            pedidoExistente.setPedValorTotal(itemUpdate.getPedValorTotal());
-            pedidoExistente.setPedAvaliacao(itemUpdate.getPedAvaliacao());
+            pedidoExistente.setPedHoraEntregue(pedidoUpdate.getPedHoraEntregue());
+            pedidoExistente.setPedValorTotal(pedidoUpdate.getPedValorTotal());
+            pedidoExistente.setPedAvaliacao(pedidoUpdate.getPedAvaliacao());
 
             return pedidoRepository.save(pedidoExistente);
         } else {
@@ -71,15 +71,21 @@ public class PedidoService {
         if (pedidoOptional.isPresent()) {
             PedidoEntity pedidoExistente = pedidoOptional.get();
 
-            itens.forEach(iten-> {
-                if(pedidoExistente.getItens().contains(itemPedidoMapper.map(iten))) {
-                    
+            itens.forEach(item-> {
+                try {
+                    if(pedidoExistente.getItens().contains(itemPedidoMapper.map(item))) {
+                        ItemPedidoEntity itemUpdate = itemPedidoMapper.map((ItemPedidoRequestDTO) itens);
+
+                        pedidoExistente.setItens((List<ItemPedidoEntity>) itemUpdate);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
 
             return pedidoRepository.save(pedidoExistente);
         } else {
-            throw new Exception("pedido não existe");
+            throw new Exception("aconteceu algum erro");
         }
 
     }

@@ -69,7 +69,7 @@ public class ReservaController {
         }
     }
 
-    @PutMapping("/atualizarItens/{pedId}")
+    /*@PutMapping("/atualizarItens/{pedId}")
     public PedidoResponseDTO atualizarPedidoItem(
         @PathVariable Long pedID, @RequestBody List<ItemPedidoRequestDTO> itens
     ) {
@@ -79,6 +79,6 @@ public class ReservaController {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 
 }
