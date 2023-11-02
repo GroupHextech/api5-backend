@@ -9,7 +9,13 @@ import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
 
-    @Query(value = "SELECT * FROM res_reserva", nativeQuery = true)
-    List<Object[]> getMesaStatusPorData();
+    @Query(value = "SELECT pra_id, pra_nome, pra_preco_venda FROM pra_prato", nativeQuery = true)
+    List<Object[]> getPratos();
+
+    @Query(
+        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 3",
+        nativeQuery = true
+    )
+    List<Object[]> getReservaReservado();
 
 }
