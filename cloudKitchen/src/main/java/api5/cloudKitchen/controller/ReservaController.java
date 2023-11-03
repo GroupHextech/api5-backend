@@ -59,26 +59,26 @@ public class ReservaController {
 
     @PutMapping("/atualizar/{pedId}")
     public PedidoResponseDTO atualizarPedido(
-        @PathVariable Long pedID, @RequestBody PedidoRequestDTO pedidoRequestDTO
+        @PathVariable Long pedId, @RequestBody PedidoRequestDTO pedidoRequestDTO
     ) {
         try {
-            return pedidoMapper.map(pedidoService.atualizarPedido(pedidoRequestDTO, pedID));
+            return pedidoMapper.map(pedidoService.atualizarPedido(pedidoRequestDTO, pedId));
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    /*@PutMapping("/atualizarItens/{pedId}")
+    @PutMapping("/atualizarItens/{pedId}")
     public PedidoResponseDTO atualizarPedidoItem(
-        @PathVariable Long pedID, @RequestBody List<ItemPedidoRequestDTO> itens
+        @PathVariable Long pedId, @RequestBody List<ItemPedidoRequestDTO> itens
     ) {
         try {
-            return pedidoMapper.map(pedidoService.atualizarItens(ItemPedidoRequestDTO, itens));
+            return pedidoMapper.map(pedidoService.atualizarItens(itens, pedId));
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-    }*/
+    }
 
 }

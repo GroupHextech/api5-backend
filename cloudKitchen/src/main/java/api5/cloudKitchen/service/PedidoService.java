@@ -74,9 +74,14 @@ public class PedidoService {
             itens.forEach(item-> {
                 try {
                     if(pedidoExistente.getItens().contains(itemPedidoMapper.map(item))) {
-                        ItemPedidoEntity itemUpdate = itemPedidoMapper.map((ItemPedidoRequestDTO) itens);
+                        ItemPedidoEntity itemPedidoEntity = new ItemPedidoEntity();
 
-                        pedidoExistente.setItens((List<ItemPedidoEntity>) itemUpdate);
+                        itemPedidoEntity = itemPedidoMapper.map(item);
+
+                        List<ItemPedidoEntity> itemUpdate = new ArrayList<ItemPedidoEntity>();
+                        itemUpdate.add(itemPedidoEntity);
+
+                        pedidoExistente.setItens(itemUpdate);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
