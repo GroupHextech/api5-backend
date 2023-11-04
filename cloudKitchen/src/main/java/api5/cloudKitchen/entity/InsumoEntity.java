@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,12 +36,27 @@ public class InsumoEntity {
     @Column(name = "ins_valor_compra")
     private Float insValorCompra;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "for_id", referencedColumnName = "for_id")
     private FornecedorEntity forId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "est_id", referencedColumnName = "est_id")
     private EstoqueEntity estId;
+
+    @Column(name = "ins_previsao_entrega")
+    private Date insPrecisaoEntrega;
+
+    @Column(name = "ins_data_recebimento")
+    private Date insDataRecebimento;
+
+    @Column(name = "ins_nota_fiscal")
+    private String insNotaFiscal;
+
+    @Column(name = "ins_previsao_pagamento")
+    private Date insPrecisaoPagamento;
+
+    @Column(name = "ins_data_pagamento")
+    private Date insDataPagamento;
 
 }

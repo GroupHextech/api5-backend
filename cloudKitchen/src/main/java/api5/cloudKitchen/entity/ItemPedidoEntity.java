@@ -2,6 +2,8 @@ package api5.cloudKitchen.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -13,6 +15,11 @@ import lombok.Data;
 @Table(name = "ite_item_pedido")
 public class ItemPedidoEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ite_id")
+    private Long iteId;
+
     @ManyToOne
     @JoinColumn(name = "pra_id", referencedColumnName = "pra_id")
     private PratoEntity praId;
@@ -21,7 +28,6 @@ public class ItemPedidoEntity {
     @JoinColumn(name = "ped_id", referencedColumnName = "ped_id")
     private PedidoEntity pedId;
 
-    @Id
     @Column(name = "ite_quantidade")
     private Long iteQuantidade;
 
