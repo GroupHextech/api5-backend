@@ -44,4 +44,19 @@ public class InsumoEntity {
     @JoinColumn(name = "est_id", referencedColumnName = "est_id")
     private EstoqueEntity estId;
 
+    @Column(name = "ins_previsao_entrega")
+    private Date insPrecisaoEntrega;
+
+    @Column(name = "ins_data_recebimento")
+    private Date insDataRecebimento;
+
+    @Column(name = "ins_nota_fiscal")
+    private String insNotaFiscal;
+
+    @Column(name = "ins_previsao_pagamento")
+    private Date insPrecisaoPagamento;
+
+    @Column(name = "ins_data_pagamento")
+    private Date insDataPagamento;
+
 }
