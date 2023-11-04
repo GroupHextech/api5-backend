@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api5.cloudKitchen.DTO.ItemPedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoRequestDTO;
 import api5.cloudKitchen.DTO.PedidoResponseDTO;
 import api5.cloudKitchen.mapper.PedidoMapper;
@@ -48,6 +51,30 @@ public class ReservaController {
     public PedidoResponseDTO criarPedido(@RequestBody PedidoRequestDTO pedidoDTO) {
         try {
             return pedidoMapper.map(pedidoService.novoPedido(pedidoDTO));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @PutMapping("/atualizar/{pedId}")
+    public PedidoResponseDTO atualizarPedido(
+        @PathVariable Long pedId, @RequestBody PedidoRequestDTO pedidoRequestDTO
+    ) {
+        try {
+            return pedidoMapper.map(pedidoService.atualizarPedido(pedidoRequestDTO, pedId));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @PutMapping("/atualizarItens/{pedId}")
+    public PedidoResponseDTO atualizarPedidoItem(
+        @PathVariable Long pedId, @RequestBody List<ItemPedidoRequestDTO> itens
+    ) {
+        try {
+            return pedidoMapper.map(pedidoService.atualizarItens(itens, pedId));
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -8,9 +8,11 @@ import lombok.Data;
 
 @Data
 public class PedidoResponseDTO {
-    private Long pedId;
+    private Long PedId;
     private Timestamp pedHoraPedido;
+    private Timestamp pedHoraEntregue;
     private Float pedValorTotal;
+    private Integer pedAvaliacao;
     private ReservaEntity reserva;
 
     private List<ItemPedidoResponseDTO> itens;
