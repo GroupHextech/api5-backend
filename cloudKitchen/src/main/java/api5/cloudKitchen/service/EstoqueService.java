@@ -1,18 +1,20 @@
 package api5.cloudKitchen.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import api5.cloudKitchen.repository.EstoqueRepository;
 
 @Service
 public class EstoqueService {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    EstoqueRepository estoqueRepository;
 
-    public void executarTrigger() {
-        // Execute a trigger do Oracle
-        jdbcTemplate.execute("BEGIN EXECUTE t_comparar_estoque; END;");
+    public List<Object[]> avisoNivelBaixo() {
+        return estoqueRepository.avisoNivelBaixo();
     }
 
 }

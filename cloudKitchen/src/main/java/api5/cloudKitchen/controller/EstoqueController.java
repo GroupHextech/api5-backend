@@ -1,5 +1,7 @@
 package api5.cloudKitchen.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,9 @@ public class EstoqueController {
         this.estoqueService = estoqueService;
     }
 
-    @GetMapping("/trigger")
-    public void executarTrigger() {
-        estoqueService.executarTrigger();
+    @GetMapping("/avisoNivelBaixo")
+    public List<Object[]> avisoNivelBaixo() {
+        return estoqueService.avisoNivelBaixo();
     }
 
 }
