@@ -37,14 +37,5 @@ public class EstoqueEntity {
     @JoinColumn(name = "cat_id", referencedColumnName = "cat_id")
     private CategoriaEntity catId;
 
-    public static EstoqueEntity parse(String estoqueData) {
-        // Dividir a string em partes (assumindo que os dados estão separados por algum caractere, como vírgula)
-        String[] parts = estoqueData.split(",");
-
-        EstoqueEntity estoque = new EstoqueEntity();
-        estoque.setEstId(Long.parseLong(parts[5]));
-
-        return estoque;
-    }
 
 }

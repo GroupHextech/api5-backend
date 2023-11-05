@@ -30,14 +30,5 @@ public class FornecedorEntity {
     @Column(name = "for_email")
     private String forEmail;
 
-    public static FornecedorEntity parse(String fornecedorData) {
-        // Dividir a string em partes (assumindo que os dados estão separados por algum caractere, como vírgula)
-        String[] parts = fornecedorData.split(",");
-
-        FornecedorEntity fornecedor = new FornecedorEntity();
-        fornecedor.setForId(Long.parseLong(parts[4]));
-
-        return fornecedor;
-    }
 
 }

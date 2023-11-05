@@ -1,36 +1,36 @@
 package api5.cloudKitchen.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.opencsv.exceptions.CsvException;
-
 import api5.cloudKitchen.service.InsumoService;
-
 @CrossOrigin
 @RestController
-@RequestMapping("/upload")
 public class UploadController {
 
-    @Autowired
-    private InsumoService insumoService;
+    private final InsumoService insumoService; 
 
-    @PostMapping("/csv")
-    public ResponseEntity<String> uploadCSV(@RequestParam("csvFile") MultipartFile file) {
-        try {
-            return insumoService.uploadCSV(file);
-        } catch (CsvException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erro no processamento do arquivo CSV.");
-        }
+    @Autowired
+    public UploadController(InsumoService insumoService) {
+        this.insumoService = insumoService;
     }
 
+    @PostMapping("/upload")
+    public String uploadCSV(@RequestParam("file") MultipartFile file) {
+        if (file != null && !file.isEmpty()) {
+            try {
+                insumoService.processarCSV(file.getInputStream());
+                return "CSV carregado e processado com sucesso!";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "Erro ao processar o CSV: " + e.getMessage();
+            }
+        } else {
+            return "Arquivo CSV não fornecido ou vazio.";
+        }
+    }
 }
