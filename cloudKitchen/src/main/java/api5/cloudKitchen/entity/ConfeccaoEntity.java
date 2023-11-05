@@ -2,6 +2,7 @@ package api5.cloudKitchen.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,11 +24,11 @@ public class ConfeccaoEntity {
     @Column(name = "con_qtd_utilizada")
     private Float conQtdUtilizada;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "est_id", referencedColumnName = "est_id")
     private EstoqueEntity estId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pra_id", referencedColumnName = "pra_id")
     private PratoEntity praId;
 
