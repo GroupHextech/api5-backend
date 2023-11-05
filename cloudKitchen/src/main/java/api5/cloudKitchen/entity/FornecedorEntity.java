@@ -30,5 +30,4 @@ public class FornecedorEntity {
     @Column(name = "for_email")
     private String forEmail;
 
-
 }

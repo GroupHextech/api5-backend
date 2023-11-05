@@ -35,7 +35,6 @@ public class EstoqueEntity {
 
     @ManyToOne
     @JoinColumn(name = "cat_id", referencedColumnName = "cat_id")
-    private CategoriaEntity catId;
-
+    private CategoriaEntity catId; 
 
 }
