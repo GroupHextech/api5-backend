@@ -12,7 +12,6 @@ public class PedidoResponseDTO {
     private Timestamp pedHoraPedido;
     private Timestamp pedHoraEntregue;
     private Float pedValorTotal;
-    private Integer pedAvaliacao;
     private ReservaEntity reserva;
 
     private List<ItemPedidoResponseDTO> itens;
