@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import api5.cloudKitchen.DTO.LoginRequestDTO;
+import api5.cloudKitchen.DTO.LoginResponseDTO;
 import api5.cloudKitchen.entity.PedidoEntity;
 import api5.cloudKitchen.repository.FuncionarioRepository;
 import api5.cloudKitchen.service.PedidoService;
@@ -16,9 +18,13 @@ import api5.cloudKitchen.service.PedidoService;
 @CrossOrigin
 @RequestMapping("/login")
 public class LoginController {
-    
+
     @PostMapping()
-    public FuncionarioRepository autenticar(@RequestBody) throws JsonProcessingException {
+    public LoginResponseDTO logar(@RequestBody LoginRequestDTO loginRequestDTO) {
+
+        try {
+            return 
+        }
 
     }
 }
