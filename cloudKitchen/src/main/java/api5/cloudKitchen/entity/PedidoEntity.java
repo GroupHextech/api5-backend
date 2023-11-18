@@ -25,10 +25,6 @@ public class PedidoEntity {
     @Column(name = "ped_id")
     private Long pedId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
-    private FuncionarioEntity funId;
-
     @Column(name = "ped_hora_pedido")
     private Timestamp pedHoraPedido;
 
@@ -39,6 +35,10 @@ public class PedidoEntity {
     private Float pedValorTotal;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
+    private FuncionarioEntity funId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "res_id", referencedColumnName = "res_id")
     private ReservaEntity resId;
 
@@ -47,6 +47,6 @@ public class PedidoEntity {
     private ReservaEntity resTelefone;
 
     @OneToMany(mappedBy = "pedId")
-    private List<ItemPedidoEntity>  itens;
+    private List<ItemPedidoEntity> itens;
 
 }

@@ -19,12 +19,4 @@ import api5.cloudKitchen.service.PedidoService;
 @RequestMapping("/login")
 public class LoginController {
 
-    @PostMapping()
-    public LoginResponseDTO logar(@RequestBody LoginRequestDTO loginRequestDTO) {
-
-        try {
-            return 
-        }
-
-    }
 }
