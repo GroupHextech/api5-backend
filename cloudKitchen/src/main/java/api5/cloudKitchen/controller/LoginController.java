@@ -1,5 +1,11 @@
 package api5.cloudKitchen.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,15 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import api5.cloudKitchen.DTO.LoginRequestDTO;
-import api5.cloudKitchen.DTO.LoginResponseDTO;
-import api5.cloudKitchen.entity.PedidoEntity;
-import api5.cloudKitchen.repository.FuncionarioRepository;
-import api5.cloudKitchen.service.PedidoService;
+import api5.cloudKitchen.security.JwtUtils;
+import api5.cloudKitchen.security.Login;
+import api5.cloudKitchen.service.LoginService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/login")
 public class LoginController {
+
+    @Autowired
+	private LoginService loginService;
+	
+    @Autowired
+    private AuthenticationManager authManager;
+
+    @PostMapping()
+    public Login autenticar(@RequestBody Login login) throws JsonProcessingException {
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+            login.getLoginUsuario(), login.getSenhaUsuario()
+        );
+        auth = authManager.authenticate(auth);
+
+        login.setSenhaUsuario(null);
+        login.setToken(JwtUtils.generateToken(auth));
+        login.setAutorizacao(auth.getAuthorities().iterator().next().getAuthority());
+        List<ViewListarUsuario> samples = loginService.findByLoginUsuario(login.getLoginUsuario());
+        ViewListarUsuario sample = samples.get(0);
+        login.setIdUsuario(sample.getIdUsuario());
+        login.setSenhaUsuario(sample.getSenhaUsuario());
+        return login;
+    }
 
 }

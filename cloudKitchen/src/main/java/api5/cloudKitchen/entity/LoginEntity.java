@@ -21,15 +21,15 @@ public class LoginEntity {
     @Column(name = "log_id")
     private Long logId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
-    private FuncionarioEntity funId;
-
     @Column(name =  "log_username")
     private String logUsername;
 
     @Column(name =  "log_password")
     private String logPassword;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
+    private FuncionarioEntity funId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pms_id", referencedColumnName = "pms_id")
