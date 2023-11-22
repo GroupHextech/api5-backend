@@ -26,7 +26,7 @@ public class LoginController {
 
     @Autowired
 	private LoginService loginService;
-	
+
     @Autowired
     private AuthenticationManager authManager;
 
@@ -36,14 +36,14 @@ public class LoginController {
             login.getLoginUsuario(), login.getSenhaUsuario()
         );
         auth = authManager.authenticate(auth);
-
+        
         login.setSenhaUsuario(null);
         login.setToken(JwtUtils.generateToken(auth));
         login.setAutorizacao(auth.getAuthorities().iterator().next().getAuthority());
-        List<LoginEntity> samples = loginService.findByUsernameList(login.getLoginUsuario());
+        List<LoginEntity> samples = loginService.findByLoginUsuario(login.getLoginUsuario());
         LoginEntity sample = samples.get(0);
-        login.setIdUsuario(sample.getIdUsuario());
-        login.setSenhaUsuario(sample.getSenhaUsuario());
+        login.setIdUsuario(sample.getLogId());
+        login.setSenhaUsuario(sample.getLogPassword());
         return login;
     }
 

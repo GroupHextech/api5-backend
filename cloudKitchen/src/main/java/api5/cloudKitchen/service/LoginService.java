@@ -1,5 +1,6 @@
 package api5.cloudKitchen.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,15 @@ public class LoginService {
 		}
 
     }
+
+	// LISTAR //
+	public List<LoginEntity> getAllUsuarios() {
+		return loginRepository.findAll();
+	}
+
+	// LISTAR VIEW STATUS USUARIO POR ID //
+	public List<LoginEntity> findByLoginUsuario(String LoginUsuario) {
+		return loginRepository.findByUsernameList(LoginUsuario);
+	}
 
 }
