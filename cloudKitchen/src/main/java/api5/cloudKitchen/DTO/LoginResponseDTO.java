@@ -7,5 +7,6 @@ public class LoginResponseDTO {
 
     private String logUsername;
     private String logPassword;
+    private PermissaoDTO pmsId;
 
 }

@@ -1,32 +1,55 @@
 package api5.cloudKitchen.mapper;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import api5.cloudKitchen.DTO.LoginDTO;
+import api5.cloudKitchen.DTO.LoginRequestDTO;
+import api5.cloudKitchen.DTO.LoginResponseDTO;
+import api5.cloudKitchen.DTO.PermissaoDTO;
 import api5.cloudKitchen.entity.LoginEntity;
+import api5.cloudKitchen.entity.PermissaoEntity;
+import api5.cloudKitchen.repository.PermissaoRepository;
 
 @Component
 public class LoginMapper {
 
-    public LoginEntity map(LoginDTO loginDTO) {
+    @Autowired
+    PermissaoRepository permissaoRepository;
+
+    @Autowired
+    PermissaoMapper permissaoMapper;
+
+    public LoginEntity map(LoginRequestDTO loginRequestDTO) throws Exception {
 
         LoginEntity loginEntity = new LoginEntity();
-        loginEntity.setLogUsername(loginDTO.getLogUsername());
-        loginEntity.setLogPassword(loginDTO.getLogPassword());
-        loginEntity.setPmsId(loginDTO.getPmsId());
+
+        Optional<PermissaoEntity> permissao = permissaoRepository.findById(loginRequestDTO.getPmsId());
+
+        if(permissao.isEmpty()){
+            throw new Exception("Permissao não encontrada");
+        }
+
+        loginEntity.setLogUsername(loginRequestDTO.getLogUsername());
+        loginEntity.setLogPassword(loginRequestDTO.getLogPassword());
+        loginEntity.setPmsId(permissao.get());
 
         return loginEntity;
 
     }
 
-    public LoginDTO map(LoginEntity loginEntity) {
+    public LoginResponseDTO map(LoginEntity loginEntity) {
 
-        LoginDTO loginRequestDTO = new LoginDTO();
-        loginRequestDTO.setLogUsername(loginEntity.getLogUsername());
-        loginRequestDTO.setLogPassword(loginEntity.getLogPassword());
-        loginRequestDTO.setPmsId(loginEntity.getPmsId());
+        LoginResponseDTO loginResponseDTO = new LoginResponseDTO();
 
-        return loginRequestDTO;
+        PermissaoDTO permissao = permissaoMapper.map(loginEntity.getPmsId());
+
+        loginResponseDTO.setLogUsername(loginEntity.getLogUsername());
+        loginResponseDTO.setLogPassword(loginEntity.getLogPassword());
+        loginResponseDTO.setPmsId(permissao);
+
+        return loginResponseDTO;
 
     }
 
