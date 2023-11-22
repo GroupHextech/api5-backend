@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import api5.cloudKitchen.entity.LoginEntity;
 import api5.cloudKitchen.security.JwtUtils;
 import api5.cloudKitchen.security.Login;
 import api5.cloudKitchen.service.LoginService;
@@ -39,8 +40,8 @@ public class LoginController {
         login.setSenhaUsuario(null);
         login.setToken(JwtUtils.generateToken(auth));
         login.setAutorizacao(auth.getAuthorities().iterator().next().getAuthority());
-        List<ViewListarUsuario> samples = loginService.findByLoginUsuario(login.getLoginUsuario());
-        ViewListarUsuario sample = samples.get(0);
+        List<LoginEntity> samples = loginService.findByUsernameList(login.getLoginUsuario());
+        LoginEntity sample = samples.get(0);
         login.setIdUsuario(sample.getIdUsuario());
         login.setSenhaUsuario(sample.getSenhaUsuario());
         return login;

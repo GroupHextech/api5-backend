@@ -1,4 +1,4 @@
-package apiembraer.backend.security;
+package api5.cloudKitchen.security;
 
 import java.io.IOException;
 
@@ -16,21 +16,21 @@ import org.springframework.web.filter.GenericFilterBean;
 
 public class JwtAuthenticationFilter extends GenericFilterBean {
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
-		try {
-			HttpServletRequest servletRequest = (HttpServletRequest) request;
-			String authorization = servletRequest.getHeader(HttpHeaders.AUTHORIZATION);
-			if (authorization != null) {
-				Authentication credentials = JwtUtils.parseToken(authorization.replaceAll("Bearer ", ""));
-				SecurityContextHolder.getContext().setAuthentication(credentials);
-			}
-			chain.doFilter(request, response);
-		} catch (Throwable t) {
-			HttpServletResponse servletResponse = (HttpServletResponse) response;
-			servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, t.getMessage());
-		}
-	}
+        try {
+            HttpServletRequest servletRequest = (HttpServletRequest) request;
+            String authorization = servletRequest.getHeader(HttpHeaders.AUTHORIZATION);
+            if (authorization != null) {
+                Authentication credentials = JwtUtils.parseToken(authorization.replaceAll("Bearer ", ""));
+                SecurityContextHolder.getContext().setAuthentication(credentials);
+            }
+            chain.doFilter(request, response);
+        } catch (Throwable t) {
+            HttpServletResponse servletResponse = (HttpServletResponse) response;
+            servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, t.getMessage());
+        }
+    }
 }
