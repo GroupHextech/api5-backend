@@ -1,4 +1,4 @@
-package api5.cloudKitchen.security;
+/*package api5.cloudKitchen.security;
 
 import java.io.IOException;
 
@@ -34,3 +34,4 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         }
     }
 }
+*/
