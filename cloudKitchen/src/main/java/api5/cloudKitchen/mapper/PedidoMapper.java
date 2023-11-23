@@ -53,7 +53,6 @@ public class PedidoMapper {
         pedidoResponseDTO.setPedHoraPedido(pedidoEntity.getPedHoraPedido());
         pedidoResponseDTO.setPedHoraEntregue(pedidoEntity.getPedHoraEntregue());
         pedidoResponseDTO.setPedValorTotal(pedidoEntity.getPedValorTotal());
-        pedidoResponseDTO.setPedAvaliacao(pedidoEntity.getPedAvaliacao());
         pedidoResponseDTO.setReserva(pedidoEntity.getResId());
 
         List<ItemPedidoResponseDTO> itens = new ArrayList<ItemPedidoResponseDTO>();

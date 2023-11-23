@@ -1,7 +1,5 @@
 package api5.cloudKitchen.entity;
 
-import java.sql.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,29 +13,26 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "fun_funcionario")
-public class FuncionarioEntity {
+@Table(name = "log_login")
+public class LoginEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "fun_id")
-    private Long funId;
+    @Column(name = "log_id")
+    private Long logId;
 
-    @Column(name = "fun_nome")
-    private String funNome;
+    @Column(name =  "log_username")
+    private String logUsername;
 
-    @Column(name = "fun_salario")
-    private Float funSalario;
-
-    @Column(name = "fun_data_contrato") 
-    private Date funDataContrato;
+    @Column(name =  "log_password")
+    private String logPassword;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "car_id", referencedColumnName = "car_id")
-    private CargoEntity carId;
+    @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
+    private FuncionarioEntity funId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "per_id", referencedColumnName = "per_id")
-    private PerfilescalaEntity perId;
+    @JoinColumn(name = "pms_id", referencedColumnName = "pms_id")
+    private PermissaoEntity pmsId;
 
 }

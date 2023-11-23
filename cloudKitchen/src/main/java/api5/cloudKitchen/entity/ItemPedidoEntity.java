@@ -19,6 +19,9 @@ public class ItemPedidoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ite_id")
     private Long iteId;
+    
+    @Column(name = "ite_quantidade")
+    private Long iteQuantidade;
 
     @ManyToOne
     @JoinColumn(name = "pra_id", referencedColumnName = "pra_id")
@@ -27,8 +30,5 @@ public class ItemPedidoEntity {
     @ManyToOne
     @JoinColumn(name = "ped_id", referencedColumnName = "ped_id")
     private PedidoEntity pedId;
-
-    @Column(name = "ite_quantidade")
-    private Long iteQuantidade;
 
 }

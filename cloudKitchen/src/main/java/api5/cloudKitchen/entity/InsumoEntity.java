@@ -1,7 +1,7 @@
 package api5.cloudKitchen.entity;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +31,7 @@ public class InsumoEntity {
     private Date insValidade;
 
     @Column(name = "ins_data_hora_compra")
-    private LocalDateTime insDataHoraCompra;
+    private Timestamp insDataHoraCompra;
 
     @Column(name = "ins_valor_compra")
     private Float insValorCompra;
@@ -45,7 +45,7 @@ public class InsumoEntity {
     private EstoqueEntity estId;
 
     @Column(name = "ins_previsao_entrega")
-    private Date insPrecisaoEntrega;
+    private Date insPrevisaoEntrega;
 
     @Column(name = "ins_data_recebimento")
     private Date insDataRecebimento;
@@ -54,7 +54,7 @@ public class InsumoEntity {
     private String insNotaFiscal;
 
     @Column(name = "ins_previsao_pagamento")
-    private Date insPrecisaoPagamento;
+    private Date insPrevisaoPagamento;
 
     @Column(name = "ins_data_pagamento")
     private Date insDataPagamento;

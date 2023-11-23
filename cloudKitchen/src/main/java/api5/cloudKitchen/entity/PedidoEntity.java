@@ -34,9 +34,6 @@ public class PedidoEntity {
     @Column(name = "ped_valor_total")
     private Float pedValorTotal;
 
-    @Column(name = "ped_avaliacao")
-    private Integer pedAvaliacao;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fun_id", referencedColumnName = "fun_id")
     private FuncionarioEntity funId;
@@ -45,7 +42,11 @@ public class PedidoEntity {
     @JoinColumn(name = "res_id", referencedColumnName = "res_id")
     private ReservaEntity resId;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "res_telefone", referencedColumnName = "res_telefone")
+    private ReservaEntity resTelefone;
+
     @OneToMany(mappedBy = "pedId")
-    private List<ItemPedidoEntity>  itens;
+    private List<ItemPedidoEntity> itens;
 
 }
