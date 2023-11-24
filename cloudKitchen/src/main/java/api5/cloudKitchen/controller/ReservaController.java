@@ -47,6 +47,16 @@ public class ReservaController {
         return reservaService.getReservaReservado();
     }
 
+    @GetMapping("/ocupado")
+    public List<Object[]> getReservaOcupado() {
+        return reservaService.getReservaReservado();
+    }
+
+    @GetMapping("/livre")
+    public List<Object[]> getReservaLivre() {
+        return reservaService.getReservaReservado();
+    }
+
     @PostMapping("/pedidos")
     public PedidoResponseDTO criarPedido(@RequestBody PedidoRequestDTO pedidoDTO) {
         try {

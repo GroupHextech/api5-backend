@@ -18,4 +18,16 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
     )
     List<Object[]> getReservaReservado();
 
+    @Query(
+        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 2",
+        nativeQuery = true
+    )
+    List<Object[]> getReservaOcupado();
+
+    @Query(
+        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 1",
+        nativeQuery = true
+    )
+    List<Object[]> getReservaLivre();
+
 }
