@@ -1,5 +1,6 @@
 package api5.cloudKitchen.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,19 +43,20 @@ public class ReservaController {
         return reservaService.getPratos();
     }
 
-    @GetMapping("/reservado")
-    public List<Object[]> getReservaReservado() {
-        return reservaService.getReservaReservado();
-    }
-
-    @GetMapping("/ocupado")
-    public List<Object[]> getReservaOcupado() {
-        return reservaService.getReservaReservado();
-    }
-
-    @GetMapping("/livre")
-    public List<Object[]> getReservaLivre() {
-        return reservaService.getReservaReservado();
+    @GetMapping("/{tipoConsulta}")
+    public List<Object[]> getReservaPorTipo(@PathVariable String tipoConsulta) {
+        switch (tipoConsulta) {
+            case "all":
+                return reservaService.getAllReserva();
+            case "livre":
+                return reservaService.getReservaLivre();
+            case "ocupada":
+                return reservaService.getReservaOcupada();
+            case "reservada":
+                return reservaService.getReservaReservada();
+            default:
+                return Collections.emptyList();
+        }
     }
 
     @PostMapping("/pedidos")
