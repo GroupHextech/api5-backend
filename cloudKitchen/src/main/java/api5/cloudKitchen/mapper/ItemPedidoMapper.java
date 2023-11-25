@@ -40,7 +40,7 @@ public class ItemPedidoMapper {
         Optional<PedidoEntity> pedido = pedidoRepository.findById(itemPedidoRequestDTO.getPedId());
 
         if(pedido.isEmpty()){
-            throw new Exception("Prato não existe");
+            throw new Exception("Pedido não existe");
         }
 
         itemPedidoEntity.setPraId(prato.get());
