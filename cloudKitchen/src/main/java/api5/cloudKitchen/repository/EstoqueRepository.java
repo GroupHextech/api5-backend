@@ -15,4 +15,10 @@ public interface EstoqueRepository extends JpaRepository<EstoqueEntity, Long> {
     )
     List<Object[]> avisoNivelBaixo();
 
+    @Query(
+        value = "SELECT * FROM V_NOME_PORDUTO_FORNECEDOR",
+        nativeQuery = true
+    )
+    List<Object[]> nomeProdutoFornecedor();
+
 }

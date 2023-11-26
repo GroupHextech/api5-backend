@@ -19,19 +19,19 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
     List<Object[]> getAllReserva();
 
     @Query(
-        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 1",
+        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 1 ORDER BY res_data_hora",
         nativeQuery = true
     )
     List<Object[]> getReservaLivre();
 
     @Query(
-        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 1",
+        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 2 ORDER BY res_data_hora",
         nativeQuery = true
     )
     List<Object[]> getReservaOcupada();
 
     @Query(
-        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 1",
+        value = "SELECT res_id, res_nome, res_telefone, res_data_hora, res_mesa FROM res_reserva WHERE sta_id = 3 ORDER BY res_data_hora",
         nativeQuery = true
     )
     List<Object[]> getReservaReservada();

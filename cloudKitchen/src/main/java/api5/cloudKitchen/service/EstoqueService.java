@@ -17,4 +17,8 @@ public class EstoqueService {
         return estoqueRepository.avisoNivelBaixo();
     }
 
+    public List<Object[]> nomeProdutoFornecedor() {
+        return estoqueRepository.nomeProdutoFornecedor();
+    }
+
 }
