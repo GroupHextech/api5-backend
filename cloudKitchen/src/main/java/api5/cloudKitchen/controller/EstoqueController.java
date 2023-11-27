@@ -25,5 +25,9 @@ public class EstoqueController {
         return estoqueService.avisoNivelBaixo();
     }
 
+    @GetMapping("/nomeProduto")
+    public List<Object[]> nomeProdutoFornecedor() {
+        return estoqueService.nomeProdutoFornecedor();
+    }
 }
 

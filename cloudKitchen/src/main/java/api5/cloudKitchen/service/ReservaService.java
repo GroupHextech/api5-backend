@@ -21,8 +21,20 @@ public class ReservaService {
         return reservaRepository.getPratos();
     }
 
-    public List<Object[]> getReservaReservado() {
-        return reservaRepository.getReservaReservado();
+    public List<Object[]> getAllReserva() {
+        return reservaRepository.getAllReserva();
+    }
+
+    public List<Object[]> getReservaLivre() {
+        return reservaRepository.getReservaLivre();
+    }
+
+    public List<Object[]> getReservaOcupada() {
+        return reservaRepository.getReservaOcupada();
+    }
+
+    public List<Object[]> getReservaReservada() {
+        return reservaRepository.getReservaReservada();
     }
 
 }
