@@ -55,7 +55,6 @@ public class PedidoService {
 
             pedidoExistente.setPedHoraEntregue(pedidoUpdate.getPedHoraEntregue());
             pedidoExistente.setPedValorTotal(pedidoUpdate.getPedValorTotal());
-            pedidoExistente.setPedAvaliacao(pedidoUpdate.getPedAvaliacao());
 
             return pedidoRepository.save(pedidoExistente);
         } else {
