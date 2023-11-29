@@ -23,6 +23,7 @@ jobs:
           cd /home/opc
           sh start_app.sh 
           cd /home/opc/api5-backend/cloudKitchen
+          git checkout main
           git pull origin main
           mvn clean package
           cd target
