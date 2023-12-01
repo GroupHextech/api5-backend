@@ -2,7 +2,7 @@ name: Deploy
 on:
   pull_request:
     branches:
-      - main
+      - Sprint-4
     types: [closed]
 jobs:
   build:
@@ -23,6 +23,7 @@ jobs:
           cd /home/opc
           sh start_app.sh 
           cd /home/opc/api5-backend/cloudKitchen
+          git pull origin Sprint-4
           mvn clean package
           cd target
           nohup java -jar cloudKitchen-0.0.1-SNAPSHOT.jar > application.log 2>&1 &
